@@ -14,7 +14,7 @@
 }
 
 .booking-modal-content {
-    background-color: white;
+    background-color: var(--color-white);
     width: 90%;
     max-width: 1000px;
     height: 85vh;
@@ -31,7 +31,7 @@
     position: absolute;
     top: 15px;
     right: 15px;
-    background: white;
+    background: var(--color-white);
     border: none;
     border-radius: 50%;
     width: 40px;

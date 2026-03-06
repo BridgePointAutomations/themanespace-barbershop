@@ -1,50 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;600;700&display=swap');
 @import './styles/variables.css';
 
 /* Global Resets & Utilities */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.logo-text {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* Typography Scale */
+h1 {
+  font-size: clamp(3rem, 5vw + 1rem, 6rem);
+  margin-bottom: var(--spacing-md);
+}
+
+h2 {
+  font-size: clamp(2rem, 3vw + 1rem, 3.5rem);
+  margin-bottom: var(--spacing-sm);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  margin-bottom: var(--spacing-xs);
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  transition: all 0.2s ease;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 var(--spacing-sm);
+  padding: 0 clamp(1rem, 5vw, 4rem);
 }
 
 .btn {
-  display: inline-block;
-  padding: 12px 24px;
-  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  border-radius: 0;
   font-weight: 600;
   border: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-out;
   text-align: center;
+  font-family: var(--font-body);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  min-height: 56px;
+  cursor: pointer;
 }
 
 .btn-primary {
   background-color: var(--color-dark-green);
-  color: var(--color-white);
+  color: #FFFFFF;
 }
 
 .btn-primary:hover {
-  background-color: #143d30;
-  /* Darker shade of green */
+  background-color: var(--color-black);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
-  background-color: var(--color-tan);
-  color: var(--color-black);
+  background-color: transparent;
+  color: var(--color-dark-green);
+  border: 1px solid var(--color-dark-green);
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-tan-hover);
+  background-color: var(--color-dark-green);
+  color: var(--color-white);
 }
 
 .section-padding {
-  padding: var(--spacing-lg) 0;
+  padding: clamp(4rem, 10vw, 8rem) 0;
+}
+
+/* Global Parallax Overlap Setup */
+.parallax-image-container {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-bg);
+  background-color: var(--color-bg);
+}
+
+.parallax-image {
+  width: 100%;
+  height: calc(100% + 200px);
+  /* 100px extra top and bottom */
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: -100px;
+  /* Start translated up by 100px */
+  will-change: transform;
+}
+
+/* Floating Book Button */
+.floating-book-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: rgba(26, 77, 62, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  border: none;
+  padding: 16px 32px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.floating-book-btn:hover {
+  background-color: rgba(26, 77, 62, 0.95);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }

@@ -1,92 +1,253 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
 import { useBooking } from '../context/BookingContext';
 import './Home.css';
+import { Link } from 'react-router-dom';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Home = () => {
     const { openBookingModal } = useBooking();
+    const carouselRef = useRef(null);
+    const isPaused = useRef(false);
+    const pauseTimeout = useRef(null);
+
+    useEffect(() => {
+        let animationId;
+        const speed = 0.15; // Extremely slow scrolling for relaxed reading pace
+        let currentScroll = 0; // Track the exact decimal pixel value
+
+        const autoScroll = () => {
+            if (carouselRef.current) {
+                const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+
+                // Keep our memory variable synced if a user physically swipes the carousel manually
+                if (Math.abs(scrollLeft - currentScroll) > 1.5) {
+                    currentScroll = scrollLeft;
+                }
+
+                if (!isPaused.current) {
+                    // If we reach the end, gracefully wrap around or reset
+                    if (scrollLeft + clientWidth >= scrollWidth - 2) {
+                        currentScroll = 0;
+                        carouselRef.current.scrollLeft = 0;
+                    } else {
+                        currentScroll += speed;
+                        carouselRef.current.scrollLeft = currentScroll;
+                    }
+                }
+            }
+            animationId = requestAnimationFrame(autoScroll);
+        };
+
+        animationId = requestAnimationFrame(autoScroll);
+
+        return () => cancelAnimationFrame(animationId);
+    }, []);
+
+    const manualScroll = (direction) => {
+        if (carouselRef.current) {
+            isPaused.current = true;
+            clearTimeout(pauseTimeout.current);
+            // Resume the auto scroll shortly after the manual smooth-scroll animation finishes
+            pauseTimeout.current = setTimeout(() => {
+                isPaused.current = false;
+            }, 800);
+
+            const { clientWidth } = carouselRef.current;
+            const scrollAmount = clientWidth > 600 ? 640 : clientWidth;
+            carouselRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+        }
+    };
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        const elements = document.querySelectorAll('.fade-up');
+        elements.forEach(el => observer.observe(el));
+
+        return () => {
+            elements.forEach(el => observer.unobserve(el));
+        };
+    }, []);
 
     return (
         <div className="home-page">
             {/* Hero Section */}
-            <section className="hero">
-                <div className="hero-overlay"></div>
-                <div className="hero-content container">
-                    <h1 className="hero-title">Your Look,<br /><span>Your Space</span></h1>
-                    <p className="hero-subtitle">Premium grooming for every style. Experience the best in service and atmosphere.</p>
-                    <button onClick={openBookingModal} className="btn btn-primary hero-btn">Book Appointment</button>
-                </div>
-            </section>
-
-            {/* About Us */}
-            <section className="about-section section-padding">
-                <div className="container">
-                    <div className="section-header">
-                        <h2 className="section-title">Who We Are</h2>
-                        <div className="section-divider"></div>
-                    </div>
-                    <div className="about-content">
-                        <div className="about-text">
-                            <p>
-                                At The Mane Space, we believe that a haircut is more than just a service—it's an experience.
-                                Located in the heart of the city, we combine old-school barbering techniques with modern style suitable for the contemporary gentleman.
-                                Whether you need a classic cut, a hot towel shave, or a beard trim, our expert barbers are here to help you look and feel your best.
-                            </p>
-                        </div>
+            <section className="hero fade-up">
+                <div className="container hero-container">
+                    <div className="hero-content">
+                        <h1 className="hero-title">Redefining Hair Grooming at The Mane Space</h1>
+                        <p className="hero-subtitle">The Mane Space is a men and woman’s hair salon that specializes in elevated hair services, attention to detail, and true sense of community.</p>
+                        <button onClick={openBookingModal} className="btn btn-primary">Book Now</button>
                     </div>
                 </div>
             </section>
 
-            {/* Services Overview */}
-            <section className="services-section section-padding">
+            {/* Hero Large Image */}
+            <section className="hero-image-section fade-up">
+                <div className="hero-large-image parallax-image-container">
+                    <img className="parallax-image" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="The Mane Space Interior" />
+                </div>
+            </section>
+
+            {/* Pricing Summary */}
+            <section id="pricing" className="pricing-section section-padding fade-up">
                 <div className="container">
-                    <div className="section-header">
-                        <h2 className="section-title">Our Services</h2>
-                        <div className="section-divider"></div>
-                    </div>
-                    <div className="services-grid">
-                        <div className="service-card">
-                            <h3>Classic Cut</h3>
-                            <p className="service-desc">Consultation, wash, cut, and style.</p>
-                            <div className="service-price">$40</div>
+                    <div className="grid-split">
+                        <div className="sticky-sidebar">
+                            <h2 className="section-title">Transparent Pricing,<br />Premium Quality</h2>
+                            <p className="section-desc">Experience our full range of men’s grooming services, tailoring traditional techniques for the modern gentleman.</p>
+                            <button onClick={openBookingModal} className="btn btn-secondary desktop-only">Book Now</button>
                         </div>
-                        <div className="service-card">
-                            <h3>Beard Trim</h3>
-                            <p className="service-desc">Shaping, lining, and conditioning.</p>
-                            <div className="service-price">$25</div>
-                        </div>
-                        <div className="service-card">
-                            <h3>The Full Service</h3>
-                            <p className="service-desc">Haircut + Beard Trim + Hot Towel.</p>
-                            <div className="service-price">$60</div>
-                        </div>
-                        <div className="service-card">
-                            <h3>Head Shave</h3>
-                            <p className="service-desc">Hot towel and straight razor finish.</p>
-                            <div className="service-price">$35</div>
+                        <div className="pricing-list">
+                            <div className="price-item">
+                                <div className="price-info">
+                                    <h3>Precision Haircut</h3>
+                                    <p>Tailored to your style and hair type. 1h</p>
+                                </div>
+                                <div className="price-amt">From $55</div>
+                            </div>
+                            <div className="price-item">
+                                <div className="price-info">
+                                    <h3>Haircut & Beard Trim</h3>
+                                    <p>Complete grooming service. 1h – 1h 15min</p>
+                                </div>
+                                <div className="price-amt">From $75</div>
+                            </div>
+                            <div className="price-item">
+                                <div className="price-info">
+                                    <h3>Long / Scissor Cut</h3>
+                                    <p>Tailored scissor cut for longer styles. 1h 30min</p>
+                                </div>
+                                <div className="price-amt">From $90</div>
+                            </div>
+                            <div className="price-item">
+                                <div className="price-info">
+                                    <h3>Beard Trim</h3>
+                                    <p>Shape, trim, and clean up your beard. 30min</p>
+                                </div>
+                                <div className="price-amt">From $30</div>
+                            </div>
+                            <div className="price-item">
+                                <div className="price-info">
+                                    <h3>Custom Grooming Session</h3>
+                                    <p>Personalized consultation and advanced styling. 2h</p>
+                                </div>
+                                <div className="price-amt">$170</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Contact / Hours */}
-            <section className="contact-section section-padding">
+            {/* Reviews (Placeholder for SOTA flow) */}
+            <section id="reviews" className="reviews-section section-padding fade-up">
                 <div className="container">
-                    <div className="contact-grid">
-                        <div className="contact-info">
-                            <h2>Visit Us</h2>
-                            <p>123 Barber Street<br />Cityville, ST 12345</p>
-                            <p><strong>Phone:</strong> (555) 123-4567</p>
-                            <p><strong>Email:</strong> info@mainspace.com</p>
+                    <div className="section-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end' }}>
+                        <h2 className="section-title">What Our Clients Say</h2>
+                        <div className="carousel-controls">
+                            <button className="carousel-btn" onClick={() => manualScroll('left')} aria-label="Previous review">
+                                <ChevronLeft size={24} color="#FFFFFF" />
+                            </button>
+                            <button className="carousel-btn" onClick={() => manualScroll('right')} aria-label="Next review">
+                                <ChevronRight size={24} color="#FFFFFF" />
+                            </button>
                         </div>
-                        <div className="hours-info">
-                            <h2>Opening Hours</h2>
-                            <ul className="hours-list">
-                                <li><span>Mon - Fri:</span> <span>9:00 AM - 7:00 PM</span></li>
-                                <li><span>Saturday:</span> <span>10:00 AM - 5:00 PM</span></li>
-                                <li><span>Sunday:</span> <span>Closed</span></li>
-                            </ul>
+                    </div>
+                    <div className="reviews-carousel" ref={carouselRef}>
+                        {[
+                            { text: "\"Best haircut and beard trim I've ever had. Attention to detail is unmatched.\"", author: "Michael T." },
+                            { text: "\"Great atmosphere and professional staff. Consistently premium service.\"", author: "John D." },
+                            { text: "\"The Mane Space redefined my grooming routine. Fantastic experience every time.\"", author: "David S." },
+                            { text: "\"Incredible fades and an immaculate shop. The best barbers in the city.\"", author: "Alexander P." },
+                            { text: "\"I drive across town just for this spot. Worth every penny.\"", author: "Chris L." }
+                        ].map((review, i) => (
+                            <div className="review-card" key={i}>
+                                <p className="review-text">{review.text}</p>
+                                <p className="review-author">— {review.author}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Meet the Team */}
+            <section id="team" className="team-section section-padding fade-up">
+                <div className="container">
+                    <h2 className="section-title">Meet the Team</h2>
+                    <div className="team-grid">
+                        {[
+                            { name: 'Lucio', img: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
+                            { name: 'Chris', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
+                            { name: 'Juan', img: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
+                            { name: 'Bruna', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
+                            { name: 'Jordan', img: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' }
+                        ].map((member) => (
+                            <div className="team-card" key={member.name}>
+                                <div className="team-image-container">
+                                    <div className="team-image-wrapper parallax-image-container">
+                                        <img className="parallax-image" src={member.img} alt={member.name} />
+                                    </div>
+                                </div>
+                                <div className="team-info">
+                                    <h3>{member.name}</h3>
+                                    <button onClick={openBookingModal} className="btn-link">Book with {member.name} →</button>
+                                </div>
+                            </div>
+                        ))
+                        }
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section id="faq" className="faq-section section-padding fade-up">
+                <div className="container">
+                    <div className="grid-split">
+                        <div className="sticky-sidebar">
+                            <h2 className="section-title">Questions?<br />We’ve Got Answers</h2>
+                            <p>Find quick, helpful answers to the most common questions about bookings, services, and what to expect at The Mane Space.</p>
+                            <button onClick={openBookingModal} className="btn btn-primary desktop-only">Book now</button>
                         </div>
+                        <div className="faq-list">
+                            <div className="faq-item">
+                                <h3>What are your hours?</h3>
+                                <p>We’re open Tuesday to Friday, 10 AM to 8 PM, and Saturday from 9 AM to 5 PM. We’re closed Sunday and Monday.</p>
+                            </div>
+                            <div className="faq-item">
+                                <h3>Do I need an appointment?</h3>
+                                <p>Yes, we recommend booking in advance to ensure your preferred time and barber are available. Walk-ins are welcome when possible, but not guaranteed.</p>
+                            </div>
+                            <div className="faq-item">
+                                <h3>What services do you provide?</h3>
+                                <p>We offer a full range of men’s grooming services including precision haircuts, beard trims, long/scissor cuts, and combo packages. We also provide custom sessions for more tailored needs.</p>
+                            </div>
+                            <div className="faq-item">
+                                <h3>Do you do long hair?</h3>
+                                <p>Absolutely. We specialize in long and scissor haircuts for men who want to maintain length with clean shaping and structure.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            {/* Contact Section */}
+            <section id="contact" className="contact-section section-padding fade-up">
+                <div className="container text-left">
+                    <h2 className="section-title">Contact us</h2>
+                    <p>Got a question? Reach out or stop by, we’re here to help.</p>
+                    <div className="contact-links">
+                        <a href="https://maps.app.goo.gl/" target="_blank" rel="noreferrer" className="contact-link">123 Barber Street, Cityville</a>
+                        <a href="#" className="contact-link">Instagram</a>
                     </div>
                 </div>
             </section>
