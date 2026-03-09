@@ -152,10 +152,10 @@ const Home = () => {
                         </div>
                         <div className="carousel-controls">
                             <button className="carousel-btn" onClick={() => manualScroll('left')} aria-label="Previous review">
-                                <ChevronLeft size={24} />
+                                <ChevronLeft size={20} />
                             </button>
                             <button className="carousel-btn" onClick={() => manualScroll('right')} aria-label="Next review">
-                                <ChevronRight size={24} />
+                                <ChevronRight size={20} />
                             </button>
                         </div>
                     </div>

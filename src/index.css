@@ -152,6 +152,16 @@ a {
   transition: all 0.3s ease;
 }
 
+@media screen and (max-width: 600px) {
+  .floating-book-btn {
+    bottom: 16px;
+    right: 16px;
+    padding: 10px 20px;
+    font-size: 0.75rem;
+    min-height: 40px;
+  }
+}
+
 .floating-book-btn:hover {
   background-color: var(--color-black);
   color: #FFFFFF;
