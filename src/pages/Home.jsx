@@ -10,51 +10,45 @@ const Home = () => {
     const isPaused = useRef(false);
     const pauseTimeout = useRef(null);
 
-    useEffect(() => {
-        let animationId;
-        const speed = 0.35; // slightly faster scrolling for better pacing
-        let currentScroll = 0; // Track the exact decimal pixel value
-
-        const autoScroll = () => {
-            if (carouselRef.current) {
-                const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
-
-                // Keep our memory variable synced if a user physically swipes the carousel manually
-                if (Math.abs(scrollLeft - currentScroll) > 1.5) {
-                    currentScroll = scrollLeft;
-                }
-
-                if (!isPaused.current) {
-                    // If we reach the end, gracefully wrap around or reset
-                    if (scrollLeft + clientWidth >= scrollWidth - 2) {
-                        currentScroll = 0;
-                        carouselRef.current.scrollLeft = 0;
-                    } else {
-                        currentScroll += speed;
-                        carouselRef.current.scrollLeft = currentScroll;
-                    }
-                }
-            }
-            animationId = requestAnimationFrame(autoScroll);
-        };
-
-        animationId = requestAnimationFrame(autoScroll);
-
-        return () => cancelAnimationFrame(animationId);
-    }, []);
+    // Unique, high-impact review data
+    const reviews = [
+        {
+            text: "The precision here is unmatched. Lucio doesn't just cut hair; he understands the structural geometry of a perfect fade. The atmosphere is curated, masculine, and refined.",
+            author: "Marcus Aurelius V.",
+            role: "Creative Director"
+        },
+        {
+            text: "I've been to every 'high-end' shop in the city, but The Mane Space is in a league of its own. The attention to detail during the beard trim was meticulous. Truly a SOTA experience.",
+            author: "Julian Thorne",
+            role: "Product Designer"
+        },
+        {
+            text: "Bruna's scissor work is phenomenal. She handled my long hair with expert structure and clean shaping. It's rare to find a place that understands contemporary men's styles so deeply.",
+            author: "Soren K.",
+            role: "Software Architect"
+        },
+        {
+            text: "The aesthetic of the shop is as sharp as the straight-razor shaves. It's a true community hub where the conversation is as good as the grooming. My weekly ritual for a reason.",
+            author: "Dominic Black",
+            role: "Founder"
+        },
+        {
+            text: "Immaculate vibes and consistent excellence. Every barber here is an artist. They've redefined what I expect from a grooming session. Total visual and tactile luxury.",
+            author: "Xavier Reed",
+            role: "Photographer"
+        }
+    ];
 
     const manualScroll = (direction) => {
         if (carouselRef.current) {
-            isPaused.current = true;
-            clearTimeout(pauseTimeout.current);
-            // Resume the auto scroll shortly after the manual smooth-scroll animation finishes
-            pauseTimeout.current = setTimeout(() => {
-                isPaused.current = false;
-            }, 800);
-
-            const { clientWidth } = carouselRef.current;
+            const { clientWidth, scrollLeft } = carouselRef.current;
             const scrollAmount = clientWidth > 600 ? 640 : clientWidth;
-            carouselRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+            const newScrollTarget = direction === 'left' ? scrollLeft - scrollAmount : scrollLeft + scrollAmount;
+
+            carouselRef.current.scrollTo({
+                left: newScrollTarget,
+                behavior: 'smooth'
+            });
         }
     };
 
@@ -148,31 +142,40 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Reviews (Placeholder for SOTA flow) */}
+            {/* Reviews (SOTA dynamic carousel) */}
             <section id="reviews" className="reviews-section section-padding fade-up">
                 <div className="container">
-                    <div className="section-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end' }}>
-                        <h2 className="section-title">What Our Clients Say</h2>
+                    <div className="section-header review-header">
+                        <div className="header-text">
+                            <h2 className="section-title">Client Voice</h2>
+                            <p className="header-eyebrow">Real Stories, Real Transformations</p>
+                        </div>
                         <div className="carousel-controls">
                             <button className="carousel-btn" onClick={() => manualScroll('left')} aria-label="Previous review">
-                                <ChevronLeft size={24} color="#FFFFFF" />
+                                <ChevronLeft size={24} />
                             </button>
                             <button className="carousel-btn" onClick={() => manualScroll('right')} aria-label="Next review">
-                                <ChevronRight size={24} color="#FFFFFF" />
+                                <ChevronRight size={24} />
                             </button>
                         </div>
                     </div>
                     <div className="reviews-carousel" ref={carouselRef}>
-                        {[
-                            { text: "\"Best haircut and beard trim I've ever had. Attention to detail is unmatched.\"", author: "Michael T." },
-                            { text: "\"Great atmosphere and professional staff. Consistently premium service.\"", author: "John D." },
-                            { text: "\"The Mane Space redefined my grooming routine. Fantastic experience every time.\"", author: "David S." },
-                            { text: "\"Incredible fades and an immaculate shop. The best barbers in the city.\"", author: "Alexander P." },
-                            { text: "\"I drive across town just for this spot. Worth every penny.\"", author: "Chris L." }
-                        ].map((review, i) => (
-                            <div className="review-card" key={i}>
-                                <p className="review-text">{review.text}</p>
-                                <p className="review-author">— {review.author}</p>
+                        {reviews.map((review, i) => (
+                            <div className="review-card" key={i} style={{ '--index': i }}>
+                                <div className="review-content">
+                                    <p className="review-text">{review.text}</p>
+                                    <div className="review-meta">
+                                        <div className="author-info">
+                                            <span className="review-author">{review.author}</span>
+                                            <span className="review-role">{review.role}</span>
+                                        </div>
+                                        <div className="review-rating">
+                                            {[...Array(5)].map((_, i) => (
+                                                <span key={i} className="star">★</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>

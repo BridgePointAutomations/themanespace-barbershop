@@ -112,85 +112,172 @@
     margin-left: var(--spacing-sm);
 }
 
-/* Reviews */
-.reviews-section {
-    background-color: var(--color-bg);
-    /* Creme color */
-}
-
-.reviews-carousel {
+.review-header {
     display: flex;
-    overflow-x: auto;
-    gap: var(--spacing-md);
-    padding-top: var(--spacing-md);
-    padding-bottom: var(--spacing-md);
-    margin-top: var(--spacing-sm);
-    /* Hide scrollbars */
-    scrollbar-width: none;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* IE/Edge */
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--spacing-md);
 }
 
-.reviews-carousel::-webkit-scrollbar {
-    display: none;
-    /* Chrome/Safari */
+.header-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    /* Consistent spacing */
+    color: var(--color-black);
+    opacity: 0.6;
+    /* High contrast but secondary feel */
+    margin-top: 0.5rem;
 }
 
 .carousel-controls {
     display: flex;
     justify-content: flex-end;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-sm);
     margin-bottom: var(--spacing-sm);
 }
 
 .carousel-btn {
-    background: var(--color-dark-green);
-    border: 1px solid var(--color-dark-green);
-    width: 48px;
-    height: 48px;
+    background-color: #F9F6F0;
+    color: var(--color-black);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    width: 64px;
+    /* Increased size */
+    height: 64px;
+    /* Increased size */
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease-out;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-btn svg {
-    transition: inherit;
-    color: #FFFFFF !important;
+    stroke: currentColor;
+    /* Ensure arrow lines use the inherited color */
+    transition: stroke 0.3s ease;
 }
 
 .carousel-btn:hover {
-    background: var(--color-black);
+    background-color: var(--color-black);
+    color: #FFFFFF;
+    /* This color will now be inherited by the stroke */
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
     border-color: var(--color-black);
-    transform: translateY(-2px);
 }
 
-.carousel-btn:hover svg {
-    color: #FFFFFF !important;
+.reviews-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md) 0;
+    margin-top: var(--spacing-sm);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x proximity;
+    padding-left: 2px;
+    /* Prevent shadow clipping */
+}
+
+.reviews-carousel::-webkit-scrollbar {
+    display: none;
 }
 
 .review-card {
-    background-color: var(--color-bg);
-    /* Same color as background */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: clamp(2rem, 5vw, 4rem);
-    border: none;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    /* Darker drop shadow for better elevation */
-    flex: 0 0 calc(90vw - 2rem);
-    /* Take up most of screen on mobile */
-    max-width: 600px;
-    border-radius: 4px;
-    /* Optional slight styling, can be 0 if desired fully square */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    flex: 0 0 clamp(300px, 80vw, 600px);
+    border-radius: 0;
+    /* Brutalist sharp edge for premium feel */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    scroll-snap-align: start;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUpIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    animation-delay: calc(var(--index) * 0.15s);
+}
+
+.review-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-tan);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+@keyframes slideUpIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .review-text {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 2vw, 1.75rem);
     font-family: var(--font-heading);
     font-style: italic;
-    margin-bottom: var(--spacing-sm);
-    line-height: 1.4;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.5;
+    color: var(--color-black);
+    position: relative;
+}
+
+.review-text::before {
+    content: '“';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    font-size: 4rem;
+    color: var(--color-tan);
+    opacity: 0.2;
+    font-family: var(--font-heading);
+}
+
+.review-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: var(--spacing-sm);
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-author {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-black);
+}
+
+.review-role {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--color-dark-green);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+}
+
+.review-rating {
+    display: flex;
+    gap: 4px;
+    color: var(--color-tan);
+}
+
+.star {
+    font-size: 1.2rem;
 }
 
 /* Team Section */
