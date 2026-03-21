@@ -263,6 +263,7 @@ const Home = () => {
                     <p>Got a question? Reach out or stop by, we’re here to help.</p>
                     <div className="contact-links">
                         <a href="https://www.google.com/maps/search/?api=1&query=7976+Broadview+Rd,+Broadview+Heights,+OH+44147" target="_blank" rel="noreferrer" className="contact-link">7976 Broadview Rd, Broadview Heights, OH</a>
+                        <a href="tel:+12165607650" className="contact-link">216-560-7650</a>
                         <a href="#" className="contact-link">Instagram</a>
                     </div>
                 </div>
