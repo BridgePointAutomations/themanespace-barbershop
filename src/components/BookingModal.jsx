@@ -16,21 +16,30 @@ const BookingModal = ({ isOpen, onClose }) => {
         };
     }, [isOpen]);
 
+    // Listen for Booksy's internal close button click to close our React modal
+    useEffect(() => {
+        const handleMessage = (event) => {
+            // Booksy sends a postMessage with events.close when its X is clicked
+            if (event.data && event.data.events && event.data.events.close) {
+                onClose();
+            }
+        };
+        window.addEventListener('message', handleMessage);
+        return () => window.removeEventListener('message', handleMessage);
+    }, [onClose]);
+
     if (!isOpen) return null;
 
-    // Replace this placeholder with your actual Square Booking URL
-    const SQUARE_BOOKING_URL = 'https://squareup.com/appointments/book/placeholder';
+    // This specific widget URL allows embedding inside an iframe without connection refusals
+    const BOOKING_URL = 'https://booksy.com/widget/index.html?id=1704307&country=us&lang=en-US';
 
     return (
         <div className="booking-modal-overlay" onClick={onClose}>
             <div className="booking-modal-content" onClick={e => e.stopPropagation()}>
-                <button className="booking-modal-close" onClick={onClose} aria-label="Close modal">
-                    <X size={24} color="#333" />
-                </button>
                 <iframe
-                    src={SQUARE_BOOKING_URL}
+                    src={BOOKING_URL}
                     className="booking-iframe"
-                    title="Square Appointment Booking"
+                    title="Booksy Appointment Booking"
                     loading="lazy"
                 ></iframe>
             </div>

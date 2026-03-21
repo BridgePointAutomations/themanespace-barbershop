@@ -5,11 +5,11 @@
   --color-tan: #D4B081;
   --color-grey: #e3e3e3;
   --color-dark-grey: #2f2f2f;
-  --color-white: #E5D5C5;
-  /* Warm Creme/Tan color like the reference image */
+  --color-white: #FFFFFF;
+  --color-light-grey: #F5F5F4; /* Premium warm light grey */
 
   /* Semantic Colors */
-  --color-bg: var(--color-white);
+  --color-bg: var(--color-light-grey);
   --color-surface: var(--color-grey);
   --color-surface-dark: var(--color-black);
   --color-text: var(--color-dark-grey);
@@ -17,8 +17,8 @@
   --color-accent: var(--color-tan);
 
   /* Typography */
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Space Grotesk', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
 
   /* Spacing */
   --spacing-xs: 0.5rem;

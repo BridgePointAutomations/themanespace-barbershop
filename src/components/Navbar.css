@@ -193,3 +193,9 @@
         gap: 8px;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .nav-cta {
+        display: none !important;
+    }
+}

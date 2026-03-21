@@ -79,8 +79,8 @@ const Home = () => {
                 <div className="container hero-container">
                     <div className="hero-content">
                         <h1 className="hero-title">Redefining Hair Grooming at The Mane Space</h1>
-                        <p className="hero-subtitle">The Mane Space is a men and woman’s hair salon that specializes in elevated hair services, attention to detail, and true sense of community.</p>
-                        <button onClick={openBookingModal} className="btn btn-primary">Book Appointment Now</button>
+                        <p className="hero-subtitle">The Mane Space is a men's and women's hair salon that specializes in elevated hair services, attention to detail, and a true sense of community.</p>
+                        <button onClick={openBookingModal} className="btn btn-primary">Book Now</button>
                     </div>
                 </div>
             </section>
@@ -95,48 +95,61 @@ const Home = () => {
             {/* Pricing Summary */}
             <section id="pricing" className="pricing-section section-padding fade-up">
                 <div className="container">
-                    <div className="grid-split">
-                        <div className="sticky-sidebar">
-                            <h2 className="section-title">Transparent Pricing,<br />Premium Quality</h2>
-                            <p className="section-desc">Experience our full range of men’s grooming services, tailoring traditional techniques for the modern gentleman.</p>
-                            <button onClick={openBookingModal} className="btn btn-primary desktop-only">Book Now</button>
+                    <div className="section-header text-center" style={{ marginBottom: 'var(--spacing-lg)' }}>
+                        <h2 className="section-title">Transparent Pricing,<br />Premium Quality</h2>
+                        <p className="section-desc" style={{ maxWidth: '600px', margin: '0 auto' }}>Experience our full range of men’s grooming services, tailoring traditional techniques for the modern gentleman.</p>
+                    </div>
+
+                    <div className="pricing-table">
+                        <div className="pricing-header">
+                            <div>SERVICE</div>
+                            <div className="text-center">DURATION</div>
+                            <div className="text-right">PRICE</div>
                         </div>
                         <div className="pricing-list">
-                            <div className="price-item">
-                                <div className="price-info">
-                                    <h3>Precision Haircut</h3>
-                                    <p>Tailored to your style and hair type. 1h</p>
-                                </div>
-                                <div className="price-amt">From $55</div>
+                            <div className="price-row">
+                                <div className="price-name">Adult Haircut</div>
+                                <div className="price-duration">45m</div>
+                                <div className="price-amt">$45.00</div>
                             </div>
-                            <div className="price-item">
-                                <div className="price-info">
-                                    <h3>Haircut & Beard Trim</h3>
-                                    <p>Complete grooming service. 1h – 1h 15min</p>
-                                </div>
-                                <div className="price-amt">From $75</div>
+                            <div className="price-row">
+                                <div className="price-name">Beard Trim & Razor Line Up</div>
+                                <div className="price-duration">30m</div>
+                                <div className="price-amt">$35.00</div>
                             </div>
-                            <div className="price-item">
-                                <div className="price-info">
-                                    <h3>Long / Scissor Cut</h3>
-                                    <p>Tailored scissor cut for longer styles. 1h 30min</p>
-                                </div>
-                                <div className="price-amt">From $90</div>
+                            <div className="price-row">
+                                <div className="price-name">Men's Haircut & Beard Trim</div>
+                                <div className="price-duration">50m</div>
+                                <div className="price-amt">$50.00</div>
                             </div>
-                            <div className="price-item">
-                                <div className="price-info">
-                                    <h3>Beard Trim</h3>
-                                    <p>Shape, trim, and clean up your beard. 30min</p>
-                                </div>
-                                <div className="price-amt">From $30</div>
+                            <div className="price-row">
+                                <div className="price-name">Precision Haircut (Long Hair Trim)</div>
+                                <div className="price-duration">50m</div>
+                                <div className="price-amt">$50.00</div>
                             </div>
-                            <div className="price-item">
-                                <div className="price-info">
-                                    <h3>Custom Grooming Session</h3>
-                                    <p>Personalized consultation and advanced styling. 2h</p>
-                                </div>
-                                <div className="price-amt">$170</div>
+                            <div className="price-row">
+                                <div className="price-name">Father & Son</div>
+                                <div className="price-duration">1h 15m</div>
+                                <div className="price-amt">$78.00</div>
                             </div>
+                            <div className="price-row">
+                                <div className="price-name">Father & 2 Sons</div>
+                                <div className="price-duration">1h 30m</div>
+                                <div className="price-amt">$110.00</div>
+                            </div>
+                            <div className="price-row">
+                                <div className="price-name">Children's Haircut (Under 12)</div>
+                                <div className="price-duration">45m</div>
+                                <div className="price-amt">$35.00</div>
+                            </div>
+                            <div className="price-row">
+                                <div className="price-name">The Mane Space Experience</div>
+                                <div className="price-duration">1h</div>
+                                <div className="price-amt">$80.00</div>
+                            </div>
+                        </div>
+                        <div className="text-center" style={{ marginTop: 'var(--spacing-md)' }}>
+                            <button onClick={openBookingModal} className="btn btn-primary">Book Now</button>
                         </div>
                     </div>
                 </div>
@@ -218,7 +231,7 @@ const Home = () => {
                         <div className="sticky-sidebar">
                             <h2 className="section-title">Questions?<br />We’ve Got Answers</h2>
                             <p>Find quick, helpful answers to the most common questions about bookings, services, and what to expect at The Mane Space.</p>
-                            <button onClick={openBookingModal} className="btn btn-primary desktop-only">Book now</button>
+                            <button onClick={openBookingModal} className="btn btn-primary desktop-only">Book Now</button>
                         </div>
                         <div className="faq-list">
                             <div className="faq-item">
@@ -246,7 +259,7 @@ const Home = () => {
             {/* Contact Section */}
             <section id="contact" className="contact-section section-padding fade-up">
                 <div className="container text-left">
-                    <h2 className="section-title">Contact us</h2>
+                    <h2 className="section-title">Contact Us</h2>
                     <p>Got a question? Reach out or stop by, we’re here to help.</p>
                     <div className="contact-links">
                         <a href="https://www.google.com/maps/search/?api=1&query=7976+Broadview+Rd,+Broadview+Heights,+OH+44147" target="_blank" rel="noreferrer" className="contact-link">7976 Broadview Rd, Broadview Heights, OH</a>

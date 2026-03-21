@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 @import './styles/variables.css';
 
 /* Global Resets & Utilities */
@@ -75,33 +75,21 @@ a {
   cursor: pointer;
 }
 
-.btn-primary {
-  background-color: #F9F6F0;
+.btn-primary, .btn-secondary {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--color-black);
   border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-secondary:hover {
   background-color: var(--color-black);
   color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
   border-color: var(--color-black);
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: var(--color-black);
-  border: 1px solid var(--color-black);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.btn-secondary:hover {
-  background-color: #F9F6F0;
-  color: var(--color-black);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .section-padding {
@@ -133,7 +121,7 @@ a {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  background-color: rgba(249, 246, 240, 0.75);
+  background-color: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: var(--color-black);
