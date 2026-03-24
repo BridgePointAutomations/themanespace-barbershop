@@ -201,11 +201,11 @@ const Home = () => {
                     <h2 className="section-title">Meet the Team</h2>
                     <div className="team-grid">
                         {[
-                            { name: 'Lucio', img: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
-                            { name: 'Chris', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
-                            { name: 'Juan', img: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
-                            { name: 'Bruna', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
-                            { name: 'Jordan', img: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' }
+                            { name: 'Lucio', img: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', ig: '#' },
+                            { name: 'Chris', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', ig: '#' },
+                            { name: 'Juan', img: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', ig: '#' },
+                            { name: 'Bruna', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', ig: '#' },
+                            { name: 'Jordan', img: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', ig: '#' }
                         ].map((member) => (
                             <div className="team-card" key={member.name}>
                                 <div className="team-image-container">
@@ -215,7 +215,10 @@ const Home = () => {
                                 </div>
                                 <div className="team-info">
                                     <h3>{member.name}</h3>
-                                    <button onClick={openBookingModal} className="btn-link">Book with {member.name} →</button>
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                        <button onClick={openBookingModal} className="btn-link">Book with {member.name} →</button>
+                                        <a href={member.ig} target={member.ig !== '#' ? "_blank" : undefined} rel={member.ig !== '#' ? "noreferrer" : undefined} className="btn-link" style={{ fontSize: '0.8rem', opacity: 0.8, marginTop: '0.25rem' }}>Instagram</a>
+                                    </div>
                                 </div>
                             </div>
                         ))
@@ -236,7 +239,7 @@ const Home = () => {
                         <div className="faq-list">
                             <div className="faq-item">
                                 <h3>What are your hours?</h3>
-                                <p>Tues-Thur 10-7<br />Fri-Sat 9 -5<br />Sun- 9-4<br />Monday - Closed</p>
+                                <p>Monday - Closed<br />Tuesday - Thursday 10am - 7pm<br />Friday - Saturday 9am - 5pm<br />Sunday - 9am - 4pm</p>
                             </div>
                             <div className="faq-item">
                                 <h3>Do I need an appointment?</h3>
@@ -264,7 +267,7 @@ const Home = () => {
                     <div className="contact-links">
                         <a href="https://www.google.com/maps/search/?api=1&query=7976+Broadview+Rd,+Broadview+Heights,+OH+44147" target="_blank" rel="noreferrer" className="contact-link">7976 Broadview Rd, Broadview Heights, OH</a>
                         <a href="tel:+12165607650" className="contact-link">216-560-7650</a>
-                        <a href="#" className="contact-link">Instagram</a>
+                        <a href="https://www.instagram.com/themane.space?igsh=c2VmMGx6eDk1ZjE1&utm_source=qr" target="_blank" rel="noreferrer" className="contact-link">Instagram</a>
                     </div>
                 </div>
             </section>
