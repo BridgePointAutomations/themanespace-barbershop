@@ -16,13 +16,10 @@ const Footer = () => {
                             <span className="footer-logo-text-bottom">SPACE</span>
                         </div>
                     </div>
-                    <div className="footer-socials">
-                        <a href="#" className="social-link">Instagram</a>
-                        <a href="#" className="social-link">Facebook</a>
-                    </div>
+                    {/* Removed social links */}
                 </div>
                 <div className="footer-bottom">
-                    <p>&copy; {currentYear} The Mane Space. All rights reserved.</p>
+                    <p>&copy; {currentYear} The Mane Space. All rights reserved.<br/>By BridgePoint Automations LLC</p>
                 </div>
             </div>
         </footer>
