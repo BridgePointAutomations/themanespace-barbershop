@@ -79,7 +79,7 @@ const Home = () => {
                 <div className="container hero-container">
                     <div className="hero-content">
                         <h1 className="hero-title">Redefining Hair Grooming at The Mane Space</h1>
-                        <p className="hero-subtitle">The Mane Space is a men's and women's hair salon that specializes in elevated hair services, attention to detail, and a true sense of community.</p>
+                        <p className="hero-subtitle">The Mane Space is an elevated barbershop that specializes in tailored hair services, attention to detail, and a true sense of community.</p>
                         <button onClick={openBookingModal} className="btn btn-primary">Book Now</button>
                     </div>
                 </div>
@@ -236,7 +236,7 @@ const Home = () => {
                         <div className="faq-list">
                             <div className="faq-item">
                                 <h3>What are your hours?</h3>
-                                <p>We’re open Tuesday to Friday, 10 AM to 8 PM, and Saturday from 9 AM to 5 PM. We’re closed Sunday and Monday.</p>
+                                <p>Tues-Thur 10-7<br />Fri-Sat 9 -5<br />Sun- 9-4<br />Monday - Closed</p>
                             </div>
                             <div className="faq-item">
                                 <h3>Do I need an appointment?</h3>
