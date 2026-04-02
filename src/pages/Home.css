@@ -567,11 +567,12 @@ html {
     height: calc(100% + 100px);
     top: -50px;
     object-position: top center; /* Prevents heads from getting cropped */
+    filter: brightness(1.15) contrast(1.05);
 }
 
 @media screen and (max-width: 600px) {
     .team-image-wrapper {
-        aspect-ratio: 1 / 1; /* Slightly wider on mobile */
+        aspect-ratio: 3 / 4; /* Return to portrait mode */
     }
 }
 
