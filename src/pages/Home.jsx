@@ -16,29 +16,19 @@ const Home = () => {
     // Unique, high-impact review data
     const reviews = [
         {
-            text: "The precision here is unmatched. Lucio doesn't just cut hair; he understands the structural geometry of a perfect fade. The atmosphere is curated, masculine, and refined.",
-            author: "Marcus Aurelius V.",
-            role: "Creative Director"
+            text: "Dominic is simply the best! Between me and my son, we get compliments every where we go. He is quick, and doesn't take shortcuts. I highly recommend anybody to go to him.",
+            author: "Troy Spears",
+            role: "Client"
         },
         {
-            text: "I've been to every 'high-end' shop in the city, but The Mane Space is in a league of its own. The attention to detail during the beard trim was meticulous. Truly a SOTA experience.",
-            author: "Julian Thorne",
-            role: "Product Designer"
+            text: "Paul did a GREAT job on my son’s hair. We have been struggling to find someone who can keep up with all these new trends. My son was extremely happy with his cut. He loves the vibe of the shop as well. Paul took his time explaining the cut & then how to style it. Brody will definitely be back & I'm bringing my younger son in next week!!",
+            author: "Katie E",
+            role: "Client"
         },
         {
-            text: "Bruna's scissor work is phenomenal. She handled my long hair with expert structure and clean shaping. It's rare to find a place that understands contemporary men's styles so deeply.",
-            author: "Soren K.",
-            role: "Software Architect"
-        },
-        {
-            text: "The aesthetic of the shop is as sharp as the straight-razor shaves. It's a true community hub where the conversation is as good as the grooming. My weekly ritual for a reason.",
-            author: "Dominic Black",
-            role: "Founder"
-        },
-        {
-            text: "Immaculate vibes and consistent excellence. Every barber here is an artist. They've redefined what I expect from a grooming session. Total visual and tactile luxury.",
-            author: "Xavier Reed",
-            role: "Photographer"
+            text: "We love India! Both my boys have been getting their hair cut by Indie for several years now and always does an amazing job! Their friends and teachers are constantly asking who cuts their hair so they can go there also. If you’re looking for a great barber I highly recommend you make an appointment with Indie!",
+            author: "Maureen Wolfe",
+            role: "Client"
         }
     ];
 
@@ -204,15 +194,15 @@ const Home = () => {
                     <h2 className="section-title">Meet the Team</h2>
                     <div className="team-grid">
                         {[
-                            { name: 'Dominic', img: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', ig: '#' },
-                            { name: 'Kiara', img: barber1, ig: 'https://www.instagram.com/getrightbyki' },
+                            { name: 'Dominic', img: '', ig: '#' },
+                            { name: 'Kiara', img: barber1, ig: 'https://www.instagram.com/getrightbyki', imageStyle: { height: 'calc(100% + 60px)', top: '-30px' } },
                             { name: 'Paul', img: barber2, ig: 'https://www.instagram.com/paul_ontko' },
                             { name: 'India', img: barber3, ig: 'https://www.instagram.com/indie_thebarber' }
                         ].map((member) => (
                             <div className="team-card" key={member.name}>
                                 <div className="team-image-container">
                                     <div className="team-image-wrapper parallax-image-container">
-                                        <img className="parallax-image" src={member.img} alt={member.name} />
+                                        {member.img && <img className="parallax-image" src={member.img} alt={member.name} style={member.imageStyle || undefined} />}
                                     </div>
                                 </div>
                                 <div className="team-info">

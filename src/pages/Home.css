@@ -261,6 +261,14 @@
     transform: translateY(30px);
     animation: slideUpIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
     animation-delay: calc(var(--index) * 0.15s);
+    display: flex;
+    flex-direction: column;
+}
+
+.review-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .review-card:hover {
@@ -285,6 +293,7 @@
     line-height: 1.4;
     color: var(--color-black);
     position: relative;
+    flex-grow: 1;
 }
 
 .review-text::before {
