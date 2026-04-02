@@ -190,6 +190,11 @@
         width: 100%;
         justify-content: flex-start;
         margin-top: var(--spacing-xs);
+        margin-bottom: 0;
+    }
+    .reviews-carousel {
+        margin-top: 0 !important;
+        padding-top: var(--spacing-xs) !important;
     }
 }
 
