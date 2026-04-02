@@ -3,6 +3,9 @@ import { useBooking } from '../context/BookingContext';
 import './Home.css';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import barber1 from '../assets/team/barber1.jpg';
+import barber2 from '../assets/team/barber2.jpg';
+import barber3 from '../assets/team/barber3.jpg';
 
 const Home = () => {
     const { openBookingModal } = useBooking();
@@ -201,11 +204,10 @@ const Home = () => {
                     <h2 className="section-title">Meet the Team</h2>
                     <div className="team-grid">
                         {[
-                            { name: 'Lucio', img: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', ig: '#' },
-                            { name: 'Chris', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', ig: '#' },
-                            { name: 'Juan', img: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', ig: '#' },
-                            { name: 'Bruna', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', ig: '#' },
-                            { name: 'Jordan', img: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', ig: '#' }
+                            { name: 'Dominic', img: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', ig: '#' },
+                            { name: 'Kiara', img: barber1, ig: 'https://www.instagram.com/getrightbyki' },
+                            { name: 'Paul', img: barber2, ig: 'https://www.instagram.com/paul_ontko' },
+                            { name: 'India', img: barber3, ig: 'https://www.instagram.com/indie_thebarber' }
                         ].map((member) => (
                             <div className="team-card" key={member.name}>
                                 <div className="team-image-container">

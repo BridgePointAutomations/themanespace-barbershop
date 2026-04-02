@@ -558,15 +558,20 @@ html {
 
 .team-image-wrapper {
     width: 100%;
-    height: 60vh;
+    aspect-ratio: 3 / 4;
     background-color: var(--color-bg);
     border: 1px solid var(--color-bg);
 }
 
+.team-card .parallax-image {
+    height: calc(100% + 100px);
+    top: -50px;
+    object-position: top center; /* Prevents heads from getting cropped */
+}
+
 @media screen and (max-width: 600px) {
     .team-image-wrapper {
-        height: auto;
-        aspect-ratio: 3 / 4;
+        aspect-ratio: 1 / 1; /* Slightly wider on mobile */
     }
 }
 
@@ -582,6 +587,6 @@ html {
 
 @media screen and (min-width: 960px) {
     .team-image-wrapper {
-        height: 50vh;
+        aspect-ratio: 3 / 4;
     }
 }
