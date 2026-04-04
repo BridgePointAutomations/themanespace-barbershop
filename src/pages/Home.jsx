@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import barber1 from '../assets/team/barber1.jpg';
 import barber2 from '../assets/team/barber2.jpg';
 import barber3 from '../assets/team/barber3.jpg';
+import heroImage from '../assets/hero.jpg';
 
 const Home = () => {
     const { openBookingModal } = useBooking();
@@ -80,8 +81,8 @@ const Home = () => {
 
             {/* Hero Large Image */}
             <section className="hero-image-section fade-up">
-                <div className="hero-large-image parallax-image-container">
-                    <img className="parallax-image" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="The Mane Space Interior" />
+                <div className="hero-large-image">
+                    <img className="classic-hero-image" src={heroImage} alt="The Mane Space Interior" />
                 </div>
             </section>
 

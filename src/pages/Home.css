@@ -535,10 +535,21 @@ html {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    aspect-ratio: 16 / 9;
-    max-height: 85vh;
-    /* Prevent overflowing viewport on short screens */
     overflow: hidden;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.classic-hero-image {
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+    object-fit: cover;
+    object-position: center 60%; /* Keep focus near the floor / chairs */
+    display: block;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
 }
 
 
