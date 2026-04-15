@@ -2,8 +2,8 @@ import React from 'react';
 import './Bookings.css';
 
 const Bookings = () => {
-    // Replace this placeholder with your actual Square Booking URL
-    const SQUARE_BOOKING_URL = 'https://squareup.com/appointments/book/placeholder';
+    // Use the global Booksy link
+    const BOOKING_URL = 'https://booksy.com/en-us/instant-experiences/widget/1704307?instant_experiences_enabled=true&ig_ix=true&_branch_match_id=1563671290806293177&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLys%2FPLq7US87P1XcNrTCLSLUw8zJMsq8rSk1LLSrKzEuPTyrKLy9OLbJ1zijKz00FAM05atc9AAAA';
 
     return (
         <div className="bookings-page section-padding">
@@ -15,9 +15,9 @@ const Bookings = () => {
 
                 <div className="iframe-container">
                     <iframe
-                        src={SQUARE_BOOKING_URL}
+                        src={BOOKING_URL}
                         className="booking-iframe-full"
-                        title="Square Appointment Booking"
+                        title="Booksy Appointment Booking"
                         width="100%"
                         height="600px" // Adjust as needed
                         frameBorder="0"

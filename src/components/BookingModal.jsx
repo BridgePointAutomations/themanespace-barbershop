@@ -31,11 +31,18 @@ const BookingModal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
 
     // This specific widget URL allows embedding inside an iframe without connection refusals
-    const BOOKING_URL = 'https://booksy.com/widget/index.html?id=1704307&country=us&lang=en-US';
+    const BOOKING_URL = 'https://booksy.com/en-us/instant-experiences/widget/1704307?instant_experiences_enabled=true&ig_ix=true&_branch_match_id=1563671290806293177&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLys%2FPLq7US87P1XcNrTCLSLUw8zJMsq8rSk1LLSrKzEuPTyrKLy9OLbJ1zijKz00FAM05atc9AAAA';
 
     return (
         <div className="booking-modal-overlay" onClick={onClose}>
             <div className="booking-modal-content" onClick={e => e.stopPropagation()}>
+                <button
+                    className="booking-modal-close"
+                    onClick={onClose}
+                    aria-label="Close booking modal"
+                >
+                    <X size={24} />
+                </button>
                 <iframe
                     src={BOOKING_URL}
                     className="booking-iframe"
