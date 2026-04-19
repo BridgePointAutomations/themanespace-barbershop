@@ -232,7 +232,7 @@ const Home = () => {
                         <div className="faq-list">
                             <div className="faq-item">
                                 <h3>What are your hours?</h3>
-                                <p>Monday - Closed<br />Tuesday - Thursday 10am - 7pm<br />Friday - Saturday 9am - 5pm<br />Sunday - 9am - 4pm</p>
+                                <p>Monday - Closed<br />Tuesday - Friday 10am - 7pm<br />Saturday - Sunday 9am - 5pm</p>
                             </div>
                             <div className="faq-item">
                                 <h3>Do I need an appointment?</h3>
