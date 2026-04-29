@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Instagram, Twitter, Linkedin } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
 import './Team.css';
+import nicaso from '../assets/team/nicaso.jpg';
 
 const Team = () => {
     const navigate = useNavigate();
@@ -32,6 +33,14 @@ const Team = () => {
             image: 'https://images.unsplash.com/photo-1618077360395-f3068be8e001?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
             bio: 'The freshest talent at The Mane Space, Mike is a master of fades and sharp lines. His attention to detail ensures you leave the chair looking crisp and clean every time.',
             socials: { instagram: '#' }
+        },
+        {
+            id: 4,
+            name: 'Nicaso',
+            role: 'Barber',
+            image: nicaso,
+            bio: 'Nicaso is known for his attention to detail and sharp styling. Booking with him guarantees a fresh, modern look every time.',
+            socials: { instagram: 'https://www.instagram.com/nicasioagosto4' }
         }
     ];
 

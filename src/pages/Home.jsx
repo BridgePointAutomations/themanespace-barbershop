@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import barber1 from '../assets/team/barber1.jpg';
 import barber2 from '../assets/team/barber2.jpg';
 import barber3 from '../assets/team/barber3.jpg';
+import nicaso from '../assets/team/nicaso.jpg';
 import heroImage from '../assets/hero.jpg';
 
 const Home = () => {
@@ -198,7 +199,8 @@ const Home = () => {
                             { name: 'Dominic', img: '', ig: '#' },
                             { name: 'Kiara', img: barber1, ig: 'https://www.instagram.com/getrightbyki', imageStyle: { height: 'calc(100% + 60px)', top: '-30px' } },
                             { name: 'Paul', img: barber2, ig: 'https://www.instagram.com/paul_ontko' },
-                            { name: 'India', img: barber3, ig: 'https://www.instagram.com/indie_thebarber' }
+                            { name: 'India', img: barber3, ig: 'https://www.instagram.com/indie_thebarber' },
+                            { name: 'Nicasio', img: nicaso, ig: 'https://www.instagram.com/nicasioagosto4' }
                         ].map((member) => (
                             <div className="team-card" key={member.name}>
                                 <div className="team-image-container">
