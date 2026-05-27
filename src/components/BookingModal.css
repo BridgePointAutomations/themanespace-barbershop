@@ -79,3 +79,44 @@
         margin-top: 60px;
     }
 }
+
+.booking-modal-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-white);
+    z-index: 5;
+    border-radius: inherit;
+}
+
+.booking-modal-loader .spinner {
+    animation: spin 1s linear infinite;
+    color: var(--color-black, #000);
+    margin-bottom: 16px;
+}
+
+.booking-modal-loader p {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.booking-iframe.loading {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

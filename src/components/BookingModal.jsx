@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
-import { X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { X, Loader2 } from 'lucide-react';
 import './BookingModal.css';
 
 const BookingModal = ({ isOpen, onClose }) => {
-    // Prevent scrolling when modal is open
+    const [isLoading, setIsLoading] = useState(true);
+
+    // Prevent scrolling when modal is open and reset loading
     useEffect(() => {
         if (isOpen) {
+            setIsLoading(true);
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
@@ -43,11 +46,19 @@ const BookingModal = ({ isOpen, onClose }) => {
                 >
                     <X size={24} />
                 </button>
+
+                {isLoading && (
+                    <div className="booking-modal-loader">
+                        <Loader2 className="spinner" size={48} />
+                        <p>Loading booking system...</p>
+                    </div>
+                )}
+
                 <iframe
                     src={BOOKING_URL}
-                    className="booking-iframe"
+                    className={`booking-iframe ${isLoading ? 'loading' : ''}`}
                     title="Booksy Appointment Booking"
-                    loading="lazy"
+                    onLoad={() => setIsLoading(false)}
                 ></iframe>
             </div>
         </div>

@@ -36,10 +36,10 @@ const Team = () => {
         },
         {
             id: 4,
-            name: 'Nicaso',
+            name: 'Nicasio',
             role: 'Barber',
             image: nicaso,
-            bio: 'Nicaso is known for his attention to detail and sharp styling. Booking with him guarantees a fresh, modern look every time.',
+            bio: 'Nicasio is known for his attention to detail and sharp styling. Booking with him guarantees a fresh, modern look every time.',
             socials: { instagram: 'https://www.instagram.com/nicasioagosto4' }
         }
     ];
