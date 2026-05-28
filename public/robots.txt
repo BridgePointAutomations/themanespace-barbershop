@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bridgepointautomations.github.io/themanespace-barbershop/sitemap.xml
+Sitemap: https://themanespace.us/sitemap.xml

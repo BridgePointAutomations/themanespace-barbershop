@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { Instagram, Twitter, Linkedin } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
@@ -48,8 +49,35 @@ const Team = () => {
         openBookingModal();
     };
 
+    const teamSchema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "The Mane Space Barbers",
+        "itemListElement": teamMembers.map((m, i) => ({
+            "@type": "ListItem",
+            "position": i + 1,
+            "item": {
+                "@type": "Person",
+                "name": m.name,
+                "jobTitle": m.role,
+                "worksFor": { "@type": "Barbershop", "name": "The Mane Space" },
+                "description": m.bio
+            }
+        }))
+    };
+
     return (
         <div className="team-page section-padding">
+            <Helmet>
+                <title>Meet the Team | The Mane Space Barbershop</title>
+                <meta name="description" content="Meet the skilled barbers at The Mane Space in Broadview Heights, OH — Dom, James, Mike, Nicasio, and more. Book your appointment with your favorite today." />
+                <link rel="canonical" href="https://themanespace.us/team" />
+                <meta property="og:title" content="Meet the Team | The Mane Space" />
+                <meta property="og:description" content="Get to know the talented barbers behind The Mane Space. Book your next appointment with Dom, James, Mike, Nicasio, and more." />
+                <meta property="og:url" content="https://themanespace.us/team" />
+                <meta property="og:image" content="https://themanespace.us/og-image.png" />
+                <script type="application/ld+json">{JSON.stringify(teamSchema)}</script>
+            </Helmet>
             <div className="container">
                 <div className="section-header">
                     <h2 className="section-title">Meet the Team</h2>

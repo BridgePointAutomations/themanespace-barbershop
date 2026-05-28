@@ -13,6 +13,11 @@
     animation: fadeIn 0.3s ease;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 .booking-modal-content {
     background-color: var(--color-white);
     width: 90%;
@@ -71,6 +76,8 @@
 @media (max-width: 768px) {
     .booking-modal-overlay {
         align-items: flex-end;
+        /* backdrop-filter causes touch input stalls on mobile — use plain overlay instead */
+        backdrop-filter: none;
     }
     .booking-modal-content {
         width: 100%;

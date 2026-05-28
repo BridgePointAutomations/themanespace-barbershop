@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { X, ZoomIn } from 'lucide-react';
 import './Gallery.css';
 
@@ -26,6 +27,15 @@ const Gallery = () => {
 
     return (
         <div className="gallery-page section-padding">
+            <Helmet>
+                <title>Our Work & Gallery | The Mane Space Barbershop</title>
+                <meta name="description" content="Browse our gallery of precision fades, classic cuts, and beard styling from The Mane Space barbershop in Broadview Heights, OH. See the craft behind every cut." />
+                <link rel="canonical" href="https://themanespace.us/gallery" />
+                <meta property="og:title" content="Our Work & Gallery | The Mane Space" />
+                <meta property="og:description" content="See the precision and style behind every cut at The Mane Space. Fades, classic cuts, and beard work from our skilled barbers." />
+                <meta property="og:url" content="https://themanespace.us/gallery" />
+                <meta property="og:image" content="https://themanespace.us/og-image.png" />
+            </Helmet>
             <div className="container">
                 <div className="section-header">
                     <h2 className="section-title">Our Work</h2>

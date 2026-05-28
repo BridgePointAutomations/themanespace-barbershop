@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useBooking } from '../context/BookingContext';
 import './Home.css';
 import { Link } from 'react-router-dom';
@@ -69,6 +70,15 @@ const Home = () => {
 
     return (
         <div className="home-page">
+            <Helmet>
+                <title>The Mane Space | Premium Barbershop in Broadview Heights, OH</title>
+                <meta name="description" content="The Mane Space is a premium barbershop in Broadview Heights, OH offering classic cuts, modern styling, long scissor cuts, and beard grooming in a relaxed atmosphere. Book your appointment today." />
+                <link rel="canonical" href="https://themanespace.us/" />
+                <meta property="og:title" content="The Mane Space | Premium Barbershop in Broadview Heights, OH" />
+                <meta property="og:description" content="Experience the best in service and atmosphere at The Mane Space. Classic techniques, modern style." />
+                <meta property="og:url" content="https://themanespace.us/" />
+                <meta property="og:image" content="https://themanespace.us/og-image.png" />
+            </Helmet>
             {/* Hero Section */}
             <section className="hero fade-up">
                 <div className="container hero-container">
