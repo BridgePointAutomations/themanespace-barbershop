@@ -205,7 +205,7 @@ const Home = () => {
                     <h2 className="section-title">Meet the Team</h2>
                     <div className="team-grid">
                         {[
-                            { name: 'Dominic', img: '', ig: '#' },
+                            { name: 'Dominic', img: '', ig: 'https://www.instagram.com/delarosadidit?utm_source=qr' },
                             { name: 'Kiara', img: barber1, ig: 'https://www.instagram.com/getrightbyki', imageStyle: { height: 'calc(100% + 60px)', top: '-30px' } },
                             { name: 'Paul', img: barber2, ig: 'https://www.instagram.com/paul_ontko' },
                             { name: 'India', img: barber3, ig: 'https://www.instagram.com/indie_thebarber' }
