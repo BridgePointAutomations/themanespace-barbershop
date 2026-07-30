@@ -4,6 +4,7 @@ import { useBooking } from '../context/BookingContext';
 import './Home.css';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import dom from '../assets/team/dom.jpg';
 import barber1 from '../assets/team/barber1.jpg';
 import barber2 from '../assets/team/barber2.jpg';
 import barber3 from '../assets/team/barber3.jpg';
@@ -205,7 +206,7 @@ const Home = () => {
                     <h2 className="section-title">Meet the Team</h2>
                     <div className="team-grid">
                         {[
-                            { name: 'Dominic', img: '', ig: 'https://www.instagram.com/delarosadidit?utm_source=qr' },
+                            { name: 'Dominic', img: dom, ig: 'https://www.instagram.com/delarosadidit?utm_source=qr' },
                             { name: 'Kiara', img: barber1, ig: 'https://www.instagram.com/getrightbyki', imageStyle: { height: 'calc(100% + 60px)', top: '-30px' } },
                             { name: 'Paul', img: barber2, ig: 'https://www.instagram.com/paul_ontko' },
                             { name: 'India', img: barber3, ig: 'https://www.instagram.com/indie_thebarber' }
