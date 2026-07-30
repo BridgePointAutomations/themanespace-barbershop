@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { Instagram, Twitter, Linkedin } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
 import './Team.css';
-import nicaso from '../assets/team/nicaso.jpg';
 
 const Team = () => {
     const navigate = useNavigate();
@@ -34,14 +33,6 @@ const Team = () => {
             image: 'https://images.unsplash.com/photo-1618077360395-f3068be8e001?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
             bio: 'The freshest talent at The Mane Space, Mike is a master of fades and sharp lines. His attention to detail ensures you leave the chair looking crisp and clean every time.',
             socials: { instagram: '#' }
-        },
-        {
-            id: 4,
-            name: 'Nicasio',
-            role: 'Barber',
-            image: nicaso,
-            bio: 'Nicasio is known for his attention to detail and sharp styling. Booking with him guarantees a fresh, modern look every time.',
-            socials: { instagram: 'https://www.instagram.com/nicasioagosto4' }
         }
     ];
 
@@ -70,10 +61,10 @@ const Team = () => {
         <div className="team-page section-padding">
             <Helmet>
                 <title>Meet the Team | The Mane Space Barbershop</title>
-                <meta name="description" content="Meet the skilled barbers at The Mane Space in Broadview Heights, OH — Dom, James, Mike, Nicasio, and more. Book your appointment with your favorite today." />
+                <meta name="description" content="Meet the skilled barbers at The Mane Space in Broadview Heights, OH — Dom, James, Mike, and more. Book your appointment with your favorite today." />
                 <link rel="canonical" href="https://themanespace.us/team" />
                 <meta property="og:title" content="Meet the Team | The Mane Space" />
-                <meta property="og:description" content="Get to know the talented barbers behind The Mane Space. Book your next appointment with Dom, James, Mike, Nicasio, and more." />
+                <meta property="og:description" content="Get to know the talented barbers behind The Mane Space. Book your next appointment with Dom, James, Mike, and more." />
                 <meta property="og:url" content="https://themanespace.us/team" />
                 <meta property="og:image" content="https://themanespace.us/og-image.png" />
                 <script type="application/ld+json">{JSON.stringify(teamSchema)}</script>
